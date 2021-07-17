@@ -2,6 +2,7 @@
 using Exiled.API.Enums;
 using Exiled.API.Features;
 
+using Server = Exiled.Events.Handlers.Server;
 using Player = Exiled.Events.Handlers.Player;
 
 namespace SCPSL
@@ -14,6 +15,7 @@ namespace SCPSL
         public override PluginPriority Priority { get; } = PluginPriority.Medium;
 
         private Handlers.Player player;
+        private Handlers.Server server;
 
         private Si ()
         {
@@ -32,6 +34,9 @@ namespace SCPSL
         public void RegisterEvents()
         {
             player = new Handlers.Player();
+            server = new Handlers.Server();
+
+            Server.WaitingForPlayers += server.OnWaitingForPlayers;
 
             Player.Kicked += player.OnKicked;
             Player.Banned += player.OnBanned;
@@ -39,10 +44,13 @@ namespace SCPSL
 
         public void UnregisterEvents()
         {
+            Server.WaitingForPlayers -= server.OnWaitingForPlayers;
+
             Player.Kicked -= player.OnKicked;
             Player.Banned -= player.OnBanned;
 
             player = null;
+            server = null;
         }
     }
 }
