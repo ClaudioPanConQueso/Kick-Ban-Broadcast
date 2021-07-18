@@ -3,7 +3,7 @@ This is a SCPSL Plugin which Broadcasts to all players the player who was banned
 and it makes C.A.S.S.I.E talk when someone is Kicked or banned.
 
 Requirements for the plugin:
-EXILED 2.10.0 or newer
+EXILED 2.11.1 or newer
 
 Change Broadcast text and C.A.S.S.I.E message at %appdata%/EXILED/Configs/YourServerPort-config.yml
 
