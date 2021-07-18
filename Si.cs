@@ -9,6 +9,10 @@ namespace SCPSL
 {
     public class Si : Plugin<Config>
     {
+        public override string Author => "Claudio";
+        public override Version Version => new Version(1, 0, 5);
+        public override Version RequiredExiledVersion => new Version(2, 11, 1);
+
         private static readonly Lazy<Si> LazyInstance = new Lazy<Si>(valueFactory:() => new Si());
         public static Si Instance => LazyInstance.Value;
 
